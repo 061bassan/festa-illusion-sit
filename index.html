@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illusion - A Festa</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Novo Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+
+    <!-- Seção Principal (Landing) -->
+    <section id="hero" class="page-section active">
+        <header class="hero-main-header"> <!-- Adicionamos uma classe aqui -->
+            <img src="logo_illusion_cor.png" alt="Logo Illusion" class="logo-image"> <!-- Logo diretamente no header -->
+            <h1>ILLUSION</h1>
+        </header>
+        <main>
+            <h2>Primeiro lote já disponível!</h2>
+            <p class="slogan">No dia 27 de Julho às 21h, Open Bar, música e local confirmado — saiba mais no nosso instagram ou grupo do WhatsApp.</p>
+
+            <div class="info-section">
+                <div class="info-item">
+                    <i class="fas fa-cocktail"></i>
+                    <h3>Open Bar</h3>
+                    <ul>
+                        <li>Gin</li>
+                        <li>Vodka</li>
+                        <li>Energético</li>
+                        <li>Refrigerante</li>
+                    </ul>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-user-slash"></i>
+                    <h3>Atenção</h3>
+                    <p>Idade permitida: 14+</p>
+                    <p>(Obrigatória apresentação de documento original com foto).</p>
+                </div>
+            </div>
+
+        </main> <!-- Fechamento da tag main da seção hero -->
+            <button id="btnAdquirirIngresso" class="cta-button">
+                <i class="fas fa-ticket-alt"></i> Adquirir Ingresso
+            </button>
+            <!-- BOTÃO DO INSTAGRAM ABAIXO -->
+            <a href="https://www.instagram.com/festa.illusion/" target="_blank" id="btnInstagram" class="cta-button cta-button-spacing">
+                <i class="fab fa-instagram"></i> @festa.illusion
+            </a>
+        </main>
+        <footer>
+            <p>© 2025 Illusion. Todos os direitos reservados.</p>
+            <p>Developed by: @rbassan_</p>
+        </footer>
+    </section>
+
+   <!-- Seção Formulário -->
+<section id="formulario-section" class="page-section">
+    <div class="form-container">
+        <button type="button" id="btnVoltarHero" class="back-button top-left-button">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </button>
+        <h2><i class="fas fa-id-card"></i> Informações para o Ingresso</h2>
+        
+        <!-- MODIFICAÇÕES AQUI ABAIXO -->
+        <form id="ingressoForm" name="form-illusion" method="POST" netlify> 
+            <!-- 
+                OU PODE SER: data-netlify="true" 
+                E netlify-honeypot="bot-field" para proteção anti-spam (opcional avançado)
+            -->
+            
+            <!-- Campo oculto para nomear o formulário no Netlify (IMPORTANTE) -->
+            <input type="hidden" name="form-name" value="form-illusion" />
+
+            <!-- Seus campos de formulário existentes -->
+            <div class="form-group">
+                <label for="nomeCompleto">Nome Completo:</label>
+                <input type="text" id="nomeCompleto" name="nomeCompleto" required minlength="5" placeholder="Nome + Sobrenome">
+                <small class="error-message"></small>
+            </div>
+            <div class="form-group">
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" id="dataNascimento" name="dataNascimento" required>
+                <small class="error-message"></small>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" required pattern="\d{11}" maxlength="11" placeholder="Apenas números">
+                <small class="error-message"></small>
+            </div>
+            <div class="form-group">
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" name="sexo" required>
+                    <option value="" disabled selected>Selecione...</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="PrefiroNaoInformar">Prefiro Não Informar</option>
+                </select>
+                <small class="error-message"></small>
+            </div>
+            <div class="form-group">
+                <label for="celular">Número de Celular (com DDD):</label>
+                <input type="tel" id="celular" name="celular" required pattern="\d{10,15}" maxlength="15" placeholder="Somente números (Ex:61991618869)">
+                <small class="error-message"></small>
+            </div>
+            <button type="submit" class="cta-button">
+                <i class="fas fa-credit-card"></i> Prosseguir para Pagamento
+            </button>
+            <p id="formProceedStatus" class="form-status"></p>
+        </form>
+        <!-- FIM DAS MODIFICAÇÕES -->
+    </div>
+</section>
+
+    <!-- Seção Pagamento -->
+    <section id="pagamento-section" class="page-section">
+        <div class="pagamento-container">
+            <button type="button" id="btnVoltarFormulario" class="back-button top-left-button">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+            <h2><i class="fas fa-qrcode"></i> Pagamento via PIX</h2>
+            <p>Realize o pagamento para confirmar seu ingresso.</p>
+            <div class="pix-info">
+                <div class="qr-code-container">
+                    <img src="PAGUE_COM_PIX.jpg" alt="QR Code PIX Illusion" id="qrCodeImg" class="qr-code-image">
+                </div>
+                <div class="chave-pix-container">
+                    <p>Ou utilize a Chave PIX (Copia e Cola):</p>
+                    <div class="chave-wrapper">
+                        <strong id="chavePix" data-chave="61998792904">(61) 99879-2904</strong>
+                        <button id="btnCopiarChave" class="small-button" title="Copiar Chave">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagamento-confirmacao">
+                <p class="obs-pagamento"><b>Atenção:</b> Clique no botão abaixo apenas <b>APÓS</b> realizar o pagamento do seu ingresso.</p>
+                <button id="btnPagamentoRealizado" class="cta-button pagamento-realizado-btn">
+                    <i class="fas fa-check-circle"></i> Pagamento Realizado
+                </button>
+                <p id="formSubmitStatus" class="form-status"></p> <!-- Status do envio do formulário para Formspree -->
+            </div>
+
+            <div id="comprovanteSection" class="comprovante-section hidden">
+                <p class="instrucao-comprovante">Ótimo! Agora envie seu comprovante para um dos administradores:</p>
+                <div class="botoes-comprovante">
+                    <button id="btnEnviarComprovanteLuiz" class="cta-button whatsapp-button">
+                        <i class="fab fa-whatsapp"></i> Enviar Comprovante (Luiz)
+                    </button>
+                    <button id="btnEnviarComprovanteGuilherme" class="cta-button whatsapp-button">
+                        <i class="fab fa-whatsapp"></i> Enviar Comprovante (Guilherme)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão de Suporte Flutuante -->
+    <a id="btnSuporteWhatsapp" href="#" target="_blank" class="suporte-whatsapp-button" title="Suporte via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

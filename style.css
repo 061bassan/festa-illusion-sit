@@ -1,0 +1,650 @@
+:root {
+    --primary-color: #2c75ff; /* Azul da logo */
+    --secondary-color: #ff3366; /* Vermelho da logo */
+    --background-color: #121212; /* Preto/Cinza bem escuro */
+    --card-background: #1e1e1e; /* Cinza escuro para cards */
+    --text-color: #f0f0f0; /* Branco/Cinza claro para texto */
+    --text-color-dark: #333;
+    --light-text-color: #ffffff;
+    --border-color: #333; /* Cor para bordas sutis */
+    --error-color: #e74c3c;
+    --success-color: #2ecc71;
+    --font-family: 'Poppins', sans-serif;
+    --border-radius-main: 10px; /* Raio de borda principal */
+    --border-radius-soft: 15px; /* Raio para elementos como QR code */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 10px;
+}
+
+.page-section {
+    display: none;
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius-main);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.6s ease-out;
+    position: relative; /* Para o botão de voltar */
+}
+
+.page-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Hero Section --- */
+#hero {
+    text-align: center;
+}
+
+.logo-container {
+    margin-bottom: 10px;
+}
+
+.logo-image {
+    max-height: 120px; /* Ajuste conforme necessário */
+    width: auto;
+    border-radius: var(--border-radius-soft); /* Cantos arredondados para o logo */
+    /* border: 2px solid var(--primary-color); Adiciona uma borda se desejar */
+    box-shadow: 0 0 15px rgba(44, 117, 255, 0.3); /* Sombra sutil com a cor primária */
+}
+
+#hero h1 {
+    font-size: clamp(2.5em, 6vw, 3.8em); /* Tamanho responsivo */
+    color: var(--light-text-color); /* Branco para destaque no header escuro */
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color); /* Efeito neon sutil */
+    margin-bottom: 15px;
+}
+
+#hero h2 {
+    font-size: clamp(1.2em, 4vw, 1.6em);
+    margin-bottom: 20px;
+    color: var(--text-color);
+    font-weight: 400;
+}
+.slogan {
+    font-size: clamp(1em, 3vw, 1.1em);
+    margin-bottom: 30px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #b0b0b0; /* Cinza mais claro para o slogan */
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin: 30px 0;
+    flex-wrap: wrap; /* Para telas menores */
+}
+
+.info-item {
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo sutilmente mais claro */
+    padding: 20px;
+    border-radius: var(--border-radius-main);
+    flex-basis: calc(50% - 20px); /* Duas colunas com gap */
+    text-align: left;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.info-item i.fas {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+}
+
+.info-item h3 {
+    font-size: 1.3em;
+    color: var(--light-text-color);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.info-item ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+}
+.info-item ul li {
+    margin-bottom: 5px;
+    color: #c0c0c0;
+}
+.info-item p {
+    font-size: 0.95em;
+    color: #c0c0c0;
+    text-align: center;
+}
+
+#hero footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* --- Formulário Section --- */
+.form-container {
+    padding: 10px; /* Reduzido pois a section já tem padding */
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--light-text-color);
+}
+.form-container h2 i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #d0d0d0; /* Cinza claro para labels */
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="tel"],
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    background-color: #2a2a2a; /* Fundo do input mais escuro */
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-group input::placeholder {
+    color: #6c757d;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(44, 117, 255, 0.3); /* Sombra no foco */
+}
+
+.error-message {
+    display: block;
+    color: var(--error-color);
+    font-size: 0.85em;
+    margin-top: 5px;
+    min-height: 1em;
+}
+
+input.invalid, select.invalid {
+    border-color: var(--error-color) !important;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.3) !important;
+}
+
+
+/* --- Pagamento Section --- */
+.pagamento-container {
+    text-align: center;
+}
+
+.pagamento-container h2 {
+    margin-bottom: 20px;
+    color: var(--light-text-color);
+}
+.pagamento-container h2 i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.pix-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.qr-code-container {
+    margin-bottom: 10px;
+}
+
+.qr-code-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 350px; /* Limitar altura da imagem do QR */
+    border-radius: var(--border-radius-soft); /* Cantos arredondados para a imagem do QR */
+    border: 2px solid var(--primary-color);
+    background-color: white; /* Fundo branco se a imagem tiver transparência */
+    padding: 5px; /* Espaçamento interno se necessário */
+}
+
+.chave-pix-container {
+    background-color: #2a2a2a;
+    padding: 15px 20px;
+    border-radius: var(--border-radius-main);
+    border: 1px dashed var(--primary-color);
+    width: 100%;
+    max-width: 350px;
+}
+.chave-pix-container p {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #c0c0c0;
+}
+
+.chave-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#chavePix {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--light-text-color);
+    word-break: break-all;
+}
+
+.small-button {
+    padding: 8px 12px;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+.small-button:hover {
+    background-color: #1a5cbf; /* Azul mais escuro no hover */
+}
+
+
+.instrucao-comprovante {
+    margin: 20px 0 10px;
+    font-weight: bold;
+    color: #d0d0d0;
+}
+
+.botoes-comprovante {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* --- Botões --- */
+.cta-button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 50px; /* Botões mais arredondados */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    display: inline-flex; /* Para alinhar ícone e texto */
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espaço entre ícone e texto */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover {
+    background-color: #1a5cbf; /* Azul mais escuro */
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 15px rgba(44, 117, 255, 0.4);
+}
+.cta-button i {
+    font-size: 1em; /* Ajusta o tamanho do ícone no botão */
+}
+
+.back-button { /* Botão de Voltar Geral */
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 8px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.back-button:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+}
+
+.top-left-button { /* Posicionamento do botão de voltar */
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+
+/* --- Botão Suporte Flutuante --- */
+.suporte-whatsapp-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366;
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1000;
+}
+.suporte-whatsapp-button i.fab {
+    font-size: 1.8em;
+}
+.suporte-whatsapp-button:hover {
+    transform: scale(1.1) rotate(5deg);
+    background-color: #128C7E; /* Verde mais escuro do WhatsApp */
+}
+
+/* --- Status do Formulário --- */
+.form-status {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+.form-status.success {
+    color: var(--success-color);
+    background-color: rgba(46, 204, 113, 0.1);
+    border: 1px solid var(--success-color);
+}
+.form-status.error {
+    color: var(--error-color);
+    background-color: rgba(231, 76, 60, 0.1);
+    border: 1px solid var(--error-color);
+}
+
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .page-section {
+        padding: 20px;
+    }
+    #hero h1 {
+        font-size: 2.8em;
+    }
+    #hero h2 {
+        font-size: 1.3em;
+    }
+    .info-item {
+        flex-basis: 100%; /* Itens de info empilhados */
+    }
+    .top-left-button {
+        position: relative; /* Volta ao fluxo normal */
+        top: auto;
+        left: auto;
+        margin-bottom: 20px; /* Espaço abaixo do botão de voltar */
+        display: block; /* Para ocupar a largura e centralizar o texto */
+        text-align: center;
+    }
+    .form-container h2, .pagamento-container h2 {
+        margin-top: 10px; /* Espaço extra se o botão de voltar estiver acima */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px 5px;
+    }
+    .page-section {
+        padding: 15px;
+    }
+    .logo-image {
+        max-height: 80px;
+    }
+    #hero h1 {
+        font-size: 2.2em;
+    }
+    .cta-button {
+        font-size: 1em;
+        padding: 10px 20px;
+        width: 100%; /* Botões principais ocupam toda largura */
+        margin-bottom: 10px;
+    }
+    .cta-button:last-of-type {
+        margin-bottom: 0;
+    }
+    .botoes-comprovante .cta-button {
+        width: 100%;
+    }
+    .suporte-whatsapp-button {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+    .suporte-whatsapp-button i.fab {
+        font-size: 1.5em;
+    }
+    .chave-wrapper {
+        flex-direction: column;
+        gap: 10px;
+    }
+    #chavePix {
+        text-align: center;
+    }
+    .small-button {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+/* ... (todo o CSS anterior) ... */
+
+/* --- Formulário Section --- */
+/* ... (CSS do formulário existente) ... */
+#formProceedStatus { /* Estilo para a mensagem de erro de validação antes de ir para pagamento */
+    margin-top: 15px;
+}
+
+
+/* --- Pagamento Section --- */
+/* ... (CSS da seção de pagamento existente) ... */
+
+.pagamento-confirmacao {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-main);
+    border: 1px solid var(--border-color);
+}
+
+.obs-pagamento {
+    font-size: 0.9em;
+    color: #f1c40f; /* Amarelo para destaque da observação */
+    margin-bottom: 15px;
+    text-align: center;
+}
+.obs-pagamento b {
+    color: var(--light-text-color);
+}
+
+.pagamento-realizado-btn {
+    background-color: #27038a !important; /* Roxo */
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pagamento-realizado-btn:hover {
+    background-color: #4483ad !important; /* Roxo mais escuro */
+    box-shadow: 0 6px 15px rgba(16, 50, 124, 0.4); /* Sombra correspondente ao roxo */
+}
+
+#formSubmitStatus { /* Estilo para a mensagem de envio ao Formspree */
+    margin-top: 15px;
+}
+
+.comprovante-section {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.comprovante-section.hidden {
+    display: none;
+}
+
+.instrucao-comprovante {
+    margin-bottom: 15px; /* Ajustado */
+    font-weight: bold;
+    color: #d0d0d0;
+    text-align: center;
+}
+
+.botoes-comprovante .whatsapp-button {
+    background-color: #25D366; /* Cor padrão WhatsApp para estes botões */
+}
+.botoes-comprovante .whatsapp-button:hover {
+    background-color: #128C7E;
+    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+}
+
+
+/* Responsividade para o novo botão */
+@media (max-width: 480px) {
+    /* ... (outras regras responsivas) ... */
+    .pagamento-realizado-btn {
+        width: 100%; /* Botão de pagamento realizado ocupa toda largura em telas pequenas */
+    }
+}
+/* --- Botões --- */
+.cta-button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    /* display: inline-flex; -> MUDANÇA AQUI OU ABAIXO */
+    display: block; /* << MUDANÇA: Faz o botão ocupar a largura disponível e empurrar o próximo para baixo */
+    width: fit-content; /* << ADICIONADO: Para que o botão não ocupe 100% da largura por padrão */
+    margin-left: auto; /* << ADICIONADO: Para centralizar o botão quando display: block e width: fit-content */
+    margin-right: auto; /* << ADICIONADO: Para centralizar o botão */
+    align-items: center; /* Ainda útil para o conteúdo interno do botão se voltar a ser flex/inline-flex */
+    justify-content: center; /* Idem */
+    gap: 8px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-decoration: none; /* Adicionado para garantir que a tag <a> não tenha sublinhado */
+}
+
+/* Se você quiser que o ícone e o texto dentro do botão fiquem alinhados,
+   e ainda assim o botão seja um bloco, você pode usar um div interno com flex,
+   ou reajustar o display do .cta-button.
+   Para manter o alinhamento do ícone com texto E o empilhamento, o mais fácil é:
+*/
+.cta-button { /* REFAZENDO COM FOCO NO ALINHAMENTO INTERNO E EMPILHAMENTO EXTERNO */
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    
+    display: inline-flex; /* MANTIDO para alinhar ícone e texto DENTRO do botão */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    
+    /* Para empilhar e centralizar os botões em si: */
+    display: block; /* FORÇA O BOTÃO A SER UM BLOCO */
+    width: max-content; /* Ajusta a largura ao conteúdo */
+    min-width: 200px; /* Exemplo de largura mínima para não ficar muito pequeno */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* Centraliza o conteúdo interno se necessário */
+    text-decoration: none; /* Para a tag <a> */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+.cta-button:hover {
+    background-color: #1a5cbf; 
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 15px rgba(44, 117, 255, 0.4);
+}
+.cta-button i {
+    font-size: 1em; 
+}
+
+.cta-button-spacing {
+    margin-top: 15px; /* Adiciona espaço acima do botão do Instagram */
+}
+
+/* Na sua regra de responsividade @media (max-width: 480px) */
+@media (max-width: 480px) {
+    /* ... (suas outras regras responsivas) ... */
+    .cta-button {
+        /* ... (outras propriedades do cta-button responsivo) ... */
+        width: 90%; /* Ou 100% se preferir que ocupe toda a largura disponível na tela pequena */
+        /* max-content pode ficar muito largo em telas pequenas, então um % é melhor */
+        min-width: unset; /* Remove a largura mínima em telas pequenas */
+        padding-left: 15px; /* Ajuste o padding se necessário */
+        padding-right: 15px;
+        /* margin-bottom: 10px; -> Esta já deve existir na sua regra */
+    }
+    /* A regra .cta-button:last-of-type { margin-bottom: 0; } continua válida */
+}
